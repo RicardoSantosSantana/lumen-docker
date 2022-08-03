@@ -8,7 +8,7 @@
 ###  **PHP 8.1**
 * compose 
 * pdo 
-* pdo_mysql 
+* pdo_mysql
 * mysqli
 * zip git
 * https://localhost:8000
