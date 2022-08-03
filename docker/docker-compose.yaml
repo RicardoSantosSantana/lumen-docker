@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+
+  php:
+    container_name: php
+    restart: unless-stopped
+    build: ./php
+    links:
+      - mysql
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../blog:/var/www/
+    working_dir: /var/www/
+    entrypoint: php -S 0.0.0.0:8000 -t public
+    networks:
+      - node-network
+
+  mysql:
+    image: mysql:8.0.27
+    container_name: mysql
+    env_file:
+      ./.env 
+    ports:
+      - "3306:3306"
+    volumes:
+      - ../mysql:/var/lib/mysql
+    networks:
+      - node-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - mysql
+    env_file:
+      ./.env 
+    restart: always
+    ports:
+      - 8085:80
+    networks:
+      - node-network
+networks:
+  node-network:
+    driver: bridge
