@@ -10,7 +10,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('logout', 'Auth\AuthController@logout');
 
     // ROUTES WITH AUTH
-    Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['middleware' => 'auth:api', 'middleware' => 'CorsMiddleware:handle'], function () {
         Route::get('me', 'UserController@me');
         Route::get('users', 'UserController@getUsers');
         Route::post('refresh', 'Auth\AuthController@refresh');

@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $usuario = array('password' => Hash::make('secret'));
+        $usuario = array('password' => Hash::make('secret'), 'avatar_url' => 'http://localhost:8000/avatar/user.jpg');
 
         \App\Models\User::factory()->count(30)->create($usuario);
     }

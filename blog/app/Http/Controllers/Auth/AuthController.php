@@ -32,7 +32,14 @@ class AuthController extends BaseController
                 'error' => 'Unauthorized'
             ], 401);
         }
-        return $this->respondWithToken($token);
+
+        $detailsUser = User::where('email', $credentials['email'])->first();
+        $dataUser = [
+            "token" => $token,
+            "user" => $detailsUser
+        ];
+        return $this->respondWithToken($dataUser);
+        //return response()->json($dataUser);
     }
 
     /**
