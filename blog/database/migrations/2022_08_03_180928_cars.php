@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('model');
             $table->date('date')->useCurrent();
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 

@@ -21,7 +21,7 @@ class CarsController extends Controller
 
     public function getAll()
     {
-        $cars = $this->model->all();
+        $cars = Cars::all();
         return response()->json($cars);
     }
 

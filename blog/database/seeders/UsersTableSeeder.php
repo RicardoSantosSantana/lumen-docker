@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
-class DatabaseSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
-        Model::unguard();
-        $this->call(UsersTableSeeder::class);
-        Model::reguard();
+        $usuario = array('password' => Hash::make('secret'));
+
+        \App\Models\User::factory()->count(30)->create($usuario);
     }
 }
