@@ -31,4 +31,9 @@ class UserController extends BaseController
             'list' => User::all()
         ]);
     }
+    public function getProfile($id)
+    {
+        $user = User::find($id, ['name', 'email', 'avatar_url']);
+        return response()->json($user);
+    }
 }

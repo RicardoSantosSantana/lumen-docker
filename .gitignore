@@ -1,2 +1,8 @@
 /docker/.env
 /mysql
+/docker/san.txt
+/docker/certs
+/docker/mysql
+/docker/workbench
+/docker/apache/ssl.crt
+/docker/apache/ssl.key
